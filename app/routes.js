@@ -7,4 +7,8 @@ router.post('/iteration-1/relationships/start', function (req, res) {
   res.redirect(301, '/iteration-1/maternity/partner-details-guid?guid=' + req.session.data['guid']);
 });
 
+router.post('/iteration-1/maternity/partner-details-guid', function (req, res) {
+  res.redirect(301, '/iteration-1/maternity/confirmation?guid=' + req.session.data['guid']);
+});
+
 module.exports = router
