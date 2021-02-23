@@ -25,6 +25,52 @@ router.post('/' + project + '/iteration-2/relationship-type', function (req, res
 });
 
 router.post('/' + project + '/iteration-2/partner-details', function (req, res) {
+
+  var mm = req.session.data['dob-month'];
+
+  if (mm == 1) {
+    req.session.data.dobMonthFull = 'January';
+  }
+  else if (mm == 2) {
+    req.session.data.dobMonthFull = 'February';
+  }
+  else if (mm == 3) {
+    req.session.data.dobMonthFull = 'March';
+  }
+  else if (mm == 4) {
+    req.session.data.dobMonthFull = 'April';
+  }
+  else if (mm == 5) {
+    req.session.data.dobMonthFull = 'May';
+  }
+  else if (mm == 6) {
+    req.session.data.dobMonthFull = 'June';
+  }
+  else if (mm == 7) {
+    req.session.data.dobMonthFull = 'July';
+  }
+  else if (mm == 8) {
+    req.session.data.dobMonthFull = 'August';
+  }
+  else if (mm == 9) {
+    req.session.data.dobMonthFull = 'September';
+  }
+  else if (mm == 10) {
+    req.session.data.dobMonthFull = 'October';
+  }
+  else if (mm == 11) {
+    req.session.data.dobMonthFull = 'November';
+  }
+  else {
+    req.session.data.dobMonthFull = 'December';
+  }
+
+  req.session.data.dateOfBirth = req.session.data['dob-month'] + " " + req.session.data.dobMonthFull + " " + req.session.data['dob-year'];
+
+  res.redirect(301, '/' + project + '/iteration-2/check-your-answers?guid=' + req.session.data['guid']);
+});
+
+router.post('/' + project + '/iteration-2/check-your-answers', function (req, res) {
   res.redirect(301, '/' + project + '/iteration-2/confirmation?guid=' + req.session.data['guid']);
 });
 
