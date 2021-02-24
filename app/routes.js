@@ -21,6 +21,24 @@ router.post('/' + project + '/iteration-2/start', function (req, res) {
 });
 
 router.post('/' + project + '/iteration-2/relationship-type', function (req, res) {
+
+  var relationshipType = req.session.data['relationship-type']
+
+  if (relationshipType == 'married') {
+    req.session.data.relationshipTypeFull = 'Married';
+    req.session.data.relationshipPartnerName = 'spouse';
+  }
+  else {
+    req.session.data.relationshipTypeFull = 'Civil Partnership';
+    req.session.data.relationshipPartnerName = 'civil partner';
+  }
+
+//  if (over18 === 'false') {
+//    res.redirect('/docs/examples/branching/under-18')
+//  } else {
+//    res.redirect('/docs/examples/branching/over-18')
+//  }
+
   res.redirect(301, '/' + project + '/iteration-2/partner-details?guid=' + req.session.data['guid']);
 });
 
