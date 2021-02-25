@@ -85,7 +85,7 @@ router.post('/' + project + '/iteration-2/partner-details', function (req, res) 
 
   req.session.data.dateOfBirth = req.session.data['dob-month'] + " " + req.session.data.dobMonthFull + " " + req.session.data['dob-year'];
 
-  res.redirect(301, '/' + project + '/iteration-2/check-your-answers?guid=' + req.session.data['guid']);
+  res.redirect(301, '/' + project + '/iteration-2/confirmation?guid=' + req.session.data['guid']);
 });
 
 router.post('/' + project + '/iteration-2/check-your-answers', function (req, res) {
