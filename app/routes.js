@@ -234,12 +234,12 @@ router.post('/' + project + '/iteration-4/relationship-type', function (req, res
 
   if (relationshipType == 'married') {
     req.session.data.relationshipTypeFull = 'Married';
-    req.session.data.relationshipTypeAlt = 'marriage';
+    req.session.data.relationshipTypeAlt = 'When did you get married?';
     req.session.data.relationshipPartnerName = 'spouse';
   }
   else {
     req.session.data.relationshipTypeFull = 'Civil Partnership';
-    req.session.data.relationshipTypeAlt = 'civil partnership';
+    req.session.data.relationshipTypeAlt = 'When did you form your civil partnership?';
     req.session.data.relationshipPartnerName = 'civil partner';
   }
 
