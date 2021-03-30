@@ -234,13 +234,15 @@ router.post('/' + project + '/iteration-4/relationship-type', function (req, res
 
   if (relationshipType == 'married') {
     req.session.data.relationshipTypeFull = 'Married';
+    req.session.data.relationshipTypeFullLowercase = 'married';
     req.session.data.relationshipTypeAlt = 'When did you get married?';
-    req.session.data.relationshipPartnerName = 'spouse';
+    req.session.data.relationshipTypeName = 'marriage';
   }
   else {
-    req.session.data.relationshipTypeFull = 'Civil Partnership';
+    req.session.data.relationshipTypeFull = 'in the civil partnership';
+    req.session.data.relationshipTypeFullLowercase = 'in a civil partnership';
     req.session.data.relationshipTypeAlt = 'When did you form your civil partnership?';
-    req.session.data.relationshipPartnerName = 'civil partner';
+    req.session.data.relationshipTypeName = 'civil partnership';
   }
 
 //  if (over18 === 'false') {
@@ -295,6 +297,10 @@ router.post('/' + project + '/iteration-4/partner-details', function (req, res) 
 
   req.session.data.dateOfBirth = req.session.data['dob-day'] + " " + req.session.data.dobMonthFull + " " + req.session.data['dob-year'];
 
+  res.redirect(301, '/' + project + '/iteration-4/partner-address?guid=' + req.session.data['guid']);
+});
+
+router.post('/' + project + '/iteration-4/partner-address', function (req, res) {
   res.redirect(301, '/' + project + '/iteration-4/date-of-partnership?guid=' + req.session.data['guid']);
 });
 
@@ -341,7 +347,20 @@ router.post('/' + project + '/iteration-4/date-of-partnership', function (req, r
 
   req.session.data.dateOfPartnership = req.session.data['dop-day'] + " " + req.session.data.dopMonthFull + " " + req.session.data['dop-year'];
 
-  res.redirect(301, '/' + project + '/iteration-4/confirmation?guid=' + req.session.data['guid']);
+  res.redirect(301, '/' + project + '/iteration-4/still-in-a-relationship?guid=' + req.session.data['guid']);
+});
+
+router.post('/' + project + '/iteration-4/still-in-a-relationship', function (req, res) {
+  const inRelationship = req.session.data['still-in-a-relationship']
+  const relationshipType = req.session.data['relationship-type']
+
+  if (relationshipType == 'married' && inRelationship == 'no') {
+    res.redirect(301, '/' + project + '/iteration-4/marriage-end-date?guid=' + req.session.data['guid']);
+  } else if (relationshipType == 'civil-partnership' && inRelationship == 'no') {
+    res.redirect(301, '/' + project + '/iteration-4/civil-partnership-end-date?guid=' + req.session.data['guid']);
+  } else {
+    res.redirect(301, '/' + project + '/iteration-4/confirmation?guid=' + req.session.data['guid']);
+  }
 });
 
 router.post('/' + project + '/iteration-4/check-your-answers', function (req, res) {
