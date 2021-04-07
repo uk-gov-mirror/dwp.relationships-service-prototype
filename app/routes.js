@@ -363,6 +363,14 @@ router.post('/' + project + '/iteration-4/still-in-a-relationship', function (re
   }
 });
 
+router.post('/' + project + '/iteration-4/marriage-end-date', function (req, res) {
+  res.redirect(301, '/' + project + '/iteration-4/confirmation?guid=' + req.session.data['guid']);
+});
+
+router.post('/' + project + '/iteration-4/civil-partnership-end-date', function (req, res) {
+  res.redirect(301, '/' + project + '/iteration-4/confirmation?guid=' + req.session.data['guid']);
+});
+
 router.post('/' + project + '/iteration-4/check-your-answers', function (req, res) {
   res.redirect(301, '/' + project + '/iteration-4/confirmation?guid=' + req.session.data['guid']);
 });

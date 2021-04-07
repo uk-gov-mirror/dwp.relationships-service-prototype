@@ -15,57 +15,48 @@
     <div class="govuk-grid-column-two-thirds">
 
         <form class="form" method="post">
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                  <h1 class="govuk-heading-xl">
-                    Is your partner's addess the same as yours?
-                  </h1>
-                  <div id="dob-hint" class="govuk-hint">
-                    123 Acacia Avenue, Chelsea, London, AB1 2CD <!--{{ data['relationshipPartnerName']  or '[[relationship-partner-name]]'}}-->
-                  </div>
-                </legend>
-                <div class="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="address-1" name="address" type="radio" value="yes">
-                    <label class="govuk-label govuk-radios__label" for="address-1">
-                      Yes
-                    </label>
-                  </div>
-                  <div class="govuk-radios" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="address-2" name="address" type="radio" value="no" data-aria-controls="conditional-contact">
-                      <label class="govuk-label govuk-radios__label" for="address-2">
-                        No
-                      </label>
-                    </div>
-                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="partner-postcode">
-                          What is your partner's post code?
-                        </label>
-                        <input class="govuk-input govuk-!-width-one-third" id="partner-postcode" name="prtner-post-code" type="" spellcheck="false">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="address-3" name="address" type="radio" value="dont-know">
-                    <label class="govuk-label govuk-radios__label" for="address-3">
-                      I don't know my partner's address
-                    </label>
-                  </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Is your partner's addess the same as yours?
+                </h1>
+              </legend>
+              <div id="contact-hint" class="govuk-hint">
+                123 Acacia Avenue, Chelsea, London, AB1 2CD
+              </div>
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-1" name="address" type="radio" value="yes" data-aria-controls="conditional-address">
+                  <label class="govuk-label govuk-radios__label" for="address-1">
+                    Yes
+                  </label>
                 </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-2" name="address" type="radio" value="no" data-aria-controls="conditional-address-2">
+                  <label class="govuk-label govuk-radios__label" for="address-2">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-address-2">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="post-code">
+                      What is your partner's post code?
+                    </label>
+                    <input class="govuk-input govuk-!-width-one-quarter" id="post-code" name="post-code" type="postcode"></div>
 
-              </fieldset>
-            </div>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="address-3" name="address" type="radio" value="dont-know" data-aria-controls="conditional-address-3">
+                  <label class="govuk-label govuk-radios__label" for="address-3">
+                    I don't know my partner's address
+                  </label>
+                </div>
+              </div>
 
-
-
-
-
-
-
-
+            </fieldset>
+          </div>
 
         <button class="govuk-button" data-module="govuk-button">Save and continue</button>
 
@@ -73,5 +64,10 @@
 
     </div>
   </div>
+
+
+
+
+
 
 {% endblock %}
